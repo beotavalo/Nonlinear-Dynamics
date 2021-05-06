@@ -11,20 +11,21 @@ import matplotlib.pyplot as plt
 #defining parameters and initial conditions
 k = 2
 m = 0.5
-g =0
-beta = 0
+g = 9.81
+beta = 0.5
 
 xo = -1
 vo = -2
+to = 0
 
-xf = 10
+tf = 10
 n =  101
 
 h = 0.1
 
 #Define vector of x values
 
-t = np.linspace(xo,xf,n)
+t = np.linspace(to,tf,n)
 
 #initializing array of v values
 x = np.zeros([n])
@@ -40,8 +41,9 @@ for i in range(1, n):
     v[i] = v[i-1] + h*(g-(k/m)*x[i-1] - beta/m*v[i-1])
     
 #Printing the Data
+print('------Fordwar Euler Method------')
 for i in range(n):
-    print(f't:{i}, x:{round(x[i],3)}, v:{round(v[i],3)}')
+    print(f't:{round(t[i],2)}, x:{round(x[i],4)}, v:{round(v[i],4)}')
     
     
 
@@ -59,7 +61,7 @@ plt.xlabel('t')
 plt.show()
 
 # Create plots with pre-defined labels.
-plt.plot(x,v,)
+plt.plot(x,v,'g')
 plt.title('Phase Plane')
 plt.xlabel('x')
 plt.ylabel('v')
